@@ -211,11 +211,11 @@
         // Once real articles exist, replace the sample cards with them.
         grid.innerHTML = '';
         const categoryKey = value => {
-          const text = String(value || '').toLowerCase();
-          if (text.includes('voyage') || text.includes('travel')) return 'travel';
-          if (text.includes('animal') || text.includes('pet')) return 'animals';
-          if (text.includes('créa') || text.includes('creat') || text.includes('crochet') || text.includes('tatou')) return 'creative';
-          if (text.includes('favori') || text.includes('love') || text.includes('musique')) return 'favorites';
+          const text = String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+          if (/somewhere else|travel|voyage|out there/.test(text)) return 'travel';
+          if (/animal|pet|fuzzy/.test(text)) return 'animals';
+          if (/creative|crea|crochet|tatou|handmade/.test(text)) return 'creative';
+          if (/things i love|favorite|favourite|love|music|musique/.test(text)) return 'favorites';
           return 'life';
         };
         articles.forEach(article => {
