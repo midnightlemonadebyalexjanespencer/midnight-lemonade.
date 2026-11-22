@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "832181ec-7ebf-4c9a-a8b2-52d3013dc4f3",
+    "title": "test",
+    "content": "ceci est un article test",
+    "category": "Little Life",
+    "date": "2026-11-22"
+  }
+]
