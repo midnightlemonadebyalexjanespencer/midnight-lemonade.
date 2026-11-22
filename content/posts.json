@@ -1,5 +1,17 @@
 [
   {
+    "id": "d54f9deb-3f34-401e-b0d7-00a3aafb703d",
+    "title": "test",
+    "content": "<h2><ul><li><u><i><b>Ceci est un article test.</b></i></u></li></ul></h2>",
+    "category": "Things I Love",
+    "style": {
+      "font": "Georgia",
+      "background": "#d4e3fe",
+      "color": "#232323"
+    },
+    "date": "2026-11-22"
+  },
+  {
     "id": "c3e3a8bb-5bf8-44b3-9e8e-2cfef1e6eff3",
     "title": "test",
     "content": "ceci est un article test",
