@@ -1,5 +1,12 @@
 [
   {
+    "id": "c3e3a8bb-5bf8-44b3-9e8e-2cfef1e6eff3",
+    "title": "test",
+    "content": "ceci est un article test",
+    "category": "Little Life",
+    "date": "2026-11-22"
+  },
+  {
     "id": "b0b17521-8763-4a73-ad74-3e26827a482f",
     "title": "test",
     "content": "ceci est un article test",
