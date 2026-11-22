@@ -3,207 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PERSONAL BLOG · EST. 2026 — objets faits main, dessin et projets artistiques.">
-  <title>Atelier — Creative Studio</title>
+  <meta name="theme-color" content="#fcfcfa">
+  <meta name="description" content="Midnight Lemonade by Alex Jane Spencer — un petit journal personnel rempli de voyages, d'animaux, de créations et de jolies choses.">
+  <title>Midnight Lemonade by Alex Jane Spencer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #FCFCFA;
-      --blue: #DDEAF4;
-      --green: #E5EFDF;
-      --pink: #F8E8EB;
-      --violet: #D9D2EB;
-      --yellow: #F7EDC9;
-      --beige: #C9BBA8;
-      --ink: #596777;
-      --white: #FFFFFF;
+      --paper:#fcfcfa; --ink:#343a40; --muted:#777b80; --pink:#f8e8eb;
+      --blue:#ddeaf4; --green:#e5efdf; --lilac:#e9e3f2; --yellow:#f7edc9;
+      --oat:#eee8df; --line:#e7e4df; --white:#fff;
+      --serif:Georgia,'Times New Roman',serif; --sans:'DM Sans',Arial,sans-serif;
+      --hand:'Caveat',cursive; --mono:'DM Mono',monospace;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; background: var(--paper); color: var(--ink);
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-weight: 400; letter-spacing: .01em;
-      background-image: radial-gradient(rgba(160,170,180,.12) .7px, transparent .7px);
-      background-size: 7px 7px;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(1120px,88vw);margin:auto}
+    .top-note{background:#f2eee8;text-align:center;padding:7px 12px;font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#74716c}
+    header{position:sticky;top:0;z-index:20;background:rgba(252,252,250,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav-wrap{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font:600 29px var(--hand);letter-spacing:.01em;white-space:nowrap}
+    .brand span{color:#9a8aa9}
+    nav{display:flex;align-items:center;gap:25px}
+    nav a{font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#686b70}
+    nav a:hover,.text-link:hover{color:#a184a7}
+    .menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:50%;width:40px;height:40px}
+    .hero{padding:76px 0 84px;display:grid;grid-template-columns:1.03fr .97fr;gap:7%;align-items:center}
+    .kicker{font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#89818e}
+    h1{font:400 clamp(56px,7vw,91px)/.92 var(--serif);letter-spacing:-.065em;margin:20px 0 22px}
+    h1 em{font-style:normal;color:#9a8aa9}
+    .hero-copy{max-width:490px;color:#6f7072;font-size:15px;line-height:1.9}
+    .hero-actions{display:flex;align-items:center;gap:22px;margin-top:29px;flex-wrap:wrap}
+    .pill-link{display:inline-flex;align-items:center;gap:10px;padding:12px 19px;border:1px solid #b9aabf;border-radius:99px;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;transition:.2s}
+    .pill-link:hover{background:#e9e3f2;transform:translateY(-2px)}
+    .text-link{font:11px var(--mono);text-decoration:underline;text-underline-offset:4px}
+    .hero-collage{min-height:440px;position:relative;display:grid;place-items:center}
+    .collage-back{position:absolute;width:76%;height:84%;background:var(--blue);transform:rotate(5deg);border:9px solid white;box-shadow:0 8px 28px #30303012}
+    .collage-front{position:relative;width:76%;height:84%;background:linear-gradient(145deg,#f6e6e6,#e9e3f2 52%,#e4edf0);border:9px solid white;box-shadow:0 8px 28px #30303016;transform:rotate(-3deg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px}
+    .collage-front .sun{font-size:66px;color:#c4a878;line-height:1}
+    .collage-front strong{font:600 clamp(35px,4vw,53px)/.9 var(--hand);margin-top:17px;color:#626274}
+    .collage-front small{font:9px var(--mono);letter-spacing:.18em;margin-top:16px;color:#777}
+    .sticker{position:absolute;z-index:2;font:27px var(--hand);padding:8px 15px;background:var(--yellow);box-shadow:2px 4px 0 #0000000b;transform:rotate(-9deg)}
+    .sticker.one{top:9%;right:1%}.sticker.two{bottom:9%;left:0;background:var(--pink);transform:rotate(7deg)}
+    section{padding:78px 0}
+    .section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:32px}
+    .section-top h2,.about h2,.elsewhere h2{font:400 clamp(36px,4.5vw,54px)/1 var(--serif);letter-spacing:-.045em;margin:10px 0 0}
+    .section-top p{max-width:340px;color:var(--muted);font-size:13px;margin:0}
+    .categories{background:#f7f5f1;padding:78px 0}
+    .category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .category{min-height:195px;padding:22px 23px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:.2s}
+    .category:hover{transform:translateY(-4px);box-shadow:0 8px 24px #0000000a}
+    .category:nth-child(1){background:var(--pink)}.category:nth-child(2){background:var(--blue)}
+    .category:nth-child(3){background:var(--green)}.category:nth-child(4){background:var(--lilac)}
+    .category:nth-child(5){background:var(--yellow)}.category:nth-child(6){background:var(--oat)}
+    .category .num{font:10px var(--mono);letter-spacing:.12em;color:#777}
+    .category .symbol{position:absolute;right:20px;top:22px;font:38px var(--hand);opacity:.65}
+    .category h3{font:600 30px/.95 var(--hand);margin:0 0 7px}
+    .category p{font-size:11px;color:#666;margin:0}
+    .category .arrow{position:absolute;right:22px;bottom:19px;font-size:18px}
+    .journal{padding-bottom:90px}
+    .filter-row{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 28px}
+    .filter{border:1px solid var(--line);background:transparent;padding:8px 13px;border-radius:30px;font:10px var(--mono);color:#666;cursor:pointer}
+    .filter.active,.filter:hover{background:#343a40;color:white;border-color:#343a40}
+    .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .post{min-width:0}
+    .post-art{height:230px;display:grid;place-items:center;position:relative;overflow:hidden;border:7px solid white;box-shadow:0 3px 15px #0000000a}
+    .post-art span{font:600 35px var(--hand);color:#6b6872;transform:rotate(-5deg);text-align:center;padding:12px}
+    .post:nth-child(3n+1) .post-art{background:linear-gradient(145deg,var(--pink),#f5eee7)}
+    .post:nth-child(3n+2) .post-art{background:linear-gradient(145deg,var(--blue),#f1f2ed)}
+    .post:nth-child(3n) .post-art{background:linear-gradient(145deg,var(--green),#f4edda)}
+    .post-art:after{content:'✳';position:absolute;right:13px;top:7px;font-size:23px;color:#fff}
+    .post-meta{font:9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#89818e;margin:17px 0 8px}
+    .post h3{font:400 25px/1.08 var(--serif);margin:0 0 9px}
+    .post p{font-size:12px;color:#777;line-height:1.7;margin:0}
+    .post[hidden]{display:none}
+    .about{background:#f5f2ed}
+    .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:9%;align-items:center}
+    .about-art{min-height:340px;background:linear-gradient(145deg,var(--yellow),var(--pink),var(--blue));border:10px solid white;display:grid;place-items:center;box-shadow:8px 9px 0 #d9d0c4;transform:rotate(-2deg)}
+    .about-art span{font:600 90px var(--hand);color:#8b8291}
+    .about-copy p{max-width:570px;color:#707174;line-height:1.9;font-size:14px}
+    .about-sign{font:30px var(--hand);color:#9a8aa9;margin-top:20px}
+    .elsewhere{text-align:center}
+    .elsewhere p{color:#777;max-width:510px;margin:17px auto 25px;font-size:13px}
+    .socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .socials a{border:1px solid var(--line);padding:10px 17px;border-radius:30px;font:10px var(--mono);letter-spacing:.08em}
+    .socials a:hover{background:var(--yellow)}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:#888;font:9px var(--mono);letter-spacing:.1em}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .tiny-heart{color:#b48da0}
+    @media(max-width:760px){
+      .wrap{width:min(90vw,560px)}.nav-wrap{min-height:66px}.menu-btn{display:block}
+      nav{display:none;position:absolute;top:66px;left:0;right:0;background:var(--paper);padding:18px 5vw 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+      nav.open{display:flex}.hero{grid-template-columns:1fr;padding:55px 0 65px;gap:25px}
+      .hero-collage{min-height:330px}.collage-front,.collage-back{width:72%;height:85%}
+      section,.categories{padding:60px 0}.section-top{display:block}.section-top p{margin-top:15px}
+      .category-grid{grid-template-columns:repeat(2,1fr);gap:10px}.category{min-height:170px;padding:17px}
+      .category h3{font-size:26px}.post-grid{grid-template-columns:1fr 1fr;gap:20px 13px}.post-art{height:175px}
+      .post h3{font-size:21px}.about-grid{grid-template-columns:1fr;gap:35px}.about-art{min-height:230px}
     }
-    a { color: inherit; text-decoration: none; }
-    .topbar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 6vw; border-bottom: 1px dashed rgba(89,103,119,.25);
-      background: rgba(252,252,250,.88);
-    }
-    .wordmark { font-family: Georgia, serif; font-size: 1.35rem; letter-spacing: .08em; color: #7189A0; }
-    nav { display: flex; gap: 30px; font-size: .76rem; text-transform: uppercase; letter-spacing: .13em; }
-    nav a:hover { color: var(--beige); }
-    .hero {
-      min-height: 76vh; padding: 8vh 8vw; display: grid;
-      grid-template-columns: 1.05fr .95fr; gap: 6vw; align-items: center;
-    }
-    .eyebrow { text-transform: uppercase; letter-spacing: .22em; font-size: .68rem; color: var(--beige); }
-    h1 {
-      font: 400 clamp(3.2rem, 6.8vw, 6.7rem)/.98 Georgia, serif;
-      letter-spacing: -.055em; margin: 22px 0 26px; max-width: 720px;
-      text-shadow: 2px 2px 0 rgba(217,210,235,.8);
-    }
-    h1 em { color: var(--beige); font-weight: 400; }
-    .intro { max-width: 430px; line-height: 1.8; color: #69675f; font-size: .98rem; }
-    .cta {
-      display: inline-block; margin-top: 24px; padding: 14px 22px;
-      border: 1px solid var(--beige); border-radius: 2px;
-      font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
-      transition: .2s ease;
-    }
-    .cta:hover { background: var(--beige); color: var(--white); }
-    .hero-art {
-      min-height: 480px; position: relative; overflow: hidden;
-      background: linear-gradient(145deg, var(--blue), var(--pink)); display: grid; place-items: center;
-      border: 10px solid var(--white); outline: 1px solid rgba(89,103,119,.18);
-      box-shadow: 9px 12px 0 rgba(201,187,168,.35); transform: rotate(1.2deg);
-    }
-    .hero-art:before {
-      content: ""; width: 68%; aspect-ratio: 4/5; border-radius: 48% 48% 3px 3px;
-      background: linear-gradient(160deg, var(--green), var(--violet)); position: absolute; transform: rotate(7deg);
-      opacity: .92;
-    }
-    .hero-art:after {
-      content: "little moments • big ideas"; position: absolute; bottom: 26px; left: 26px;
-      color: #596777; font-size: .72rem; letter-spacing: .12em;
-    }
-    .shape {
-      position: relative; z-index: 1; width: 44%; aspect-ratio: 1;
-      border: 1px solid rgba(255,254,250,.9); border-radius: 50%;
-      display: grid; place-items: center; color: #7189A0;
-      background: rgba(255,255,255,.22); backdrop-filter: blur(2px);
-      font: italic 2rem Georgia, serif; transform: translate(15px,-12px);
-    }
-    section { padding: 100px 8vw; }
-    .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 38px; }
-    h2 { font: 400 clamp(2.3rem, 4vw, 4rem)/1 Georgia, serif; letter-spacing: -.04em; margin: 12px 0 0; }
-    .section-note { max-width: 310px; color: #77746c; line-height: 1.7; font-size: .88rem; }
-    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .work-card { min-width: 0; }
-    .work-image { aspect-ratio: 4/5; display: grid; place-items: center; overflow: hidden;
-      border: 8px solid var(--white); box-shadow: 4px 6px 0 rgba(201,187,168,.28);
-      position: relative; }
-    .work-image:after { content: "✧"; position:absolute; top:12px; right:15px; color:rgba(89,103,119,.7); font-size:1.5rem; }
-    .work-image span { font: italic 1.8rem Georgia, serif; color: var(--beige); }
-    .work-card:nth-child(1) .work-image { background: var(--green); }
-    .work-card:nth-child(2) .work-image { background: var(--pink); }
-    .work-card:nth-child(3) .work-image { background: var(--yellow); }
-    .work-card h3 { font: 400 1.25rem Georgia, serif; margin: 16px 0 5px; }
-    .work-card p { color: #77746c; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
-    .about {
-      background: rgba(255,255,255,.88); display: grid; grid-template-columns: .8fr 1.2fr;
-      gap: 9vw; align-items: center; border-top: 1px dashed rgba(89,103,119,.25);
-      border-bottom: 1px dashed rgba(89,103,119,.25);
-    }
-    .about-mark {
-      min-height: 340px; background: linear-gradient(135deg,var(--yellow),var(--pink),var(--blue));
-      display: grid; place-items: center; color: #7189A0; font: italic 5rem Georgia, serif;
-      border: 9px solid var(--white); box-shadow: 7px 8px 0 rgba(201,187,168,.3); transform: rotate(-2deg);
-    }
-    .about-copy { max-width: 570px; }
-    .about-copy p { color: #69675f; line-height: 1.9; }
-    .hero:after { content: "♡"; position:absolute; right: 7vw; top: 18vh; color: #C49BAA; font: 2.5rem Georgia,serif; transform: rotate(14deg); }
-    .eyebrow { font-weight: 700; }
-    .contact { text-align: center; }
-    .contact h2 { text-shadow: 2px 2px 0 rgba(221,234,244,.9); }
-    .contact h2 { max-width: 650px; margin: 18px auto; }
-    .contact p { color: #77746c; line-height: 1.8; }
-    footer {
-      border-top: 1px solid rgba(57,56,50,.13); padding: 25px 6vw;
-      display: flex; justify-content: space-between; gap: 20px;
-      color: #77746c; font-size: .7rem; letter-spacing: .08em;
-    }
-    @media (max-width: 760px) {
-      .topbar { padding: 20px 6vw; align-items: flex-start; }
-      nav { gap: 13px; flex-wrap: wrap; justify-content: flex-end; font-size: .62rem; }
-      .hero { grid-template-columns: 1fr; padding-top: 8vh; gap: 42px; }
-      .hero-art { min-height: 360px; }
-      section { padding: 72px 6vw; }
-      .section-head { display: block; }
-      .section-note { margin-top: 20px; }
-      .work-grid { grid-template-columns: 1fr 1fr; }
-      .work-card:last-child { grid-column: 1 / -1; max-width: 70%; }
-      .about { grid-template-columns: 1fr; gap: 35px; }
-      .about-mark { min-height: 230px; }
-      footer { flex-direction: column; }
-    }
+    @media(max-width:420px){.brand{font-size:25px}.category-grid{grid-template-columns:1fr 1fr}.category{min-height:155px}.post-grid{grid-template-columns:1fr}.post-art{height:220px}.hero-collage{min-height:290px}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <a class="wordmark" href="#">STUDIO / NAME</a>
-    <nav aria-label="Navigation principale">
-      <a href="#univers">L'univers</a>
-      <a href="#projets">Projets</a>
-      <a href="#apropos">À propos</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <div class="top-note">a little corner of the internet · personal blog · est. 2026</div>
+  <header>
+    <div class="wrap nav-wrap">
+      <a class="brand" href="#home">midnight <span>lemonade</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <nav id="mainNav" aria-label="Navigation principale">
+        <a href="#categories">Les catégories</a><a href="#journal">Le journal</a><a href="#about">À propos</a><a href="#elsewhere">Me retrouver</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="univers">
+  <main id="home">
+    <div class="wrap hero">
       <div>
-        <div class="eyebrow">PERSONAL BLOG  ·  CREATIVE SPACE</div>
-        <h1>A little world<br>of <em>my own.</em></h1>
-        <p class="intro">Un journal personnel fait de petits moments, de passions, de photos, d'idées et de projets créatifs. Un endroit pour partager un peu de tout, à ma façon.</p>
-        <a class="cta" href="#projets">Entrer dans mon univers</a>
+        <div class="kicker">welcome to my little world ♡</div>
+        <h1>Midnight<br><em>Lemonade.</em></h1>
+        <p class="hero-copy">Un petit bout d'Internet rien qu'à moi. Des voyages, des animaux, des créations, des idées qui partent dans tous les sens et tous ces petits morceaux de vie qui méritent une place quelque part.</p>
+        <div class="hero-actions"><a class="pill-link" href="#categories">Explore the blog <span>↗</span></a><a class="text-link" href="#about">A little about me</a></div>
       </div>
-      <div class="hero-art" aria-label="Composition abstraite dans les tons sauge et rose">
-        <div class="shape">création</div>
+      <div class="hero-collage" aria-label="Collage pastel décoratif">
+        <div class="collage-back"></div>
+        <div class="collage-front"><div class="sun">☼</div><strong>collect moments,<br>not things</strong><small>PHOTOS · STORIES · LITTLE THINGS</small></div>
+        <div class="sticker one">stay curious!</div><div class="sticker two">made of little things ♡</div>
       </div>
-    </section>
+    </div>
 
-    <section id="projets">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">A LITTLE BIT OF EVERYTHING</div>
-          <h2>Things I love<br>& little projects.</h2>
+    <section class="categories" id="categories">
+      <div class="wrap">
+        <div class="section-top"><div><div class="kicker">browse my world</div><h2>A little bit of everything.</h2></div><p>Six petits univers, aucune case obligatoire. Choisis ce qui t'inspire et installe-toi.</p></div>
+        <div class="category-grid">
+          <a class="category" href="#journal" data-filter-link="life"><span class="num">01 / EVERYDAY</span><span class="symbol">♡</span><div><h3>Little Life</h3><p>Daily moments · thoughts · stories</p></div><span class="arrow">↗</span></a>
+          <a class="category" href="#journal" data-filter-link="travel"><span class="num">02 / OUT THERE</span><span class="symbol">✈</span><div><h3>Somewhere Else</h3><p>Travel diaries · places · adventures</p></div><span class="arrow">↗</span></a>
+          <a class="category" href="#journal" data-filter-link="animals"><span class="num">03 / THE FUZZY ONES</span><span class="symbol">✿</span><div><h3>The Animal Corner</h3><p>Rescue stories · little companions</p></div><span class="arrow">↗</span></a>
+          <a class="category" href="#journal" data-filter-link="creative"><span class="num">04 / HANDMADE</span><span class="symbol">✂</span><div><h3>Creative Mess</h3><p>Crochet · art · projects · tattoos</p></div><span class="arrow">↗</span></a>
+          <a class="category" href="#journal" data-filter-link="favorites"><span class="num">05 / CURRENT OBSESSIONS</span><span class="symbol">☆</span><div><h3>Things I Love</h3><p>Music · style · beauty · inspiration</p></div><span class="arrow">↗</span></a>
+          <a class="category" href="#elsewhere"><span class="num">06 / AROUND THE WEB</span><span class="symbol">☁</span><div><h3>Find Me Elsewhere</h3><p>Socials · videos · other little corners</p></div><span class="arrow">↗</span></a>
         </div>
-        <p class="section-note">Des fragments de mon quotidien, mes inspirations du moment et les choses que j'aime créer.</p>
-      </div>
-      <div class="work-grid">
-        <article class="work-card">
-          <div class="work-image"><span>01 — handmade</span></div>
-          <h3>My creative corner</h3>
-          <p>Crochet · DIY · Art</p>
-        </article>
-        <article class="work-card">
-          <div class="work-image"><span>02 — drawing</span></div>
-          <h3>Little journal</h3>
-          <p>Thoughts · Photos · Stories</p>
-        </article>
-        <article class="work-card">
-          <div class="work-image"><span>03 — ink</span></div>
-          <h3>Things I love</h3>
-          <p>Music · Style · Inspiration</p>
-        </article>
       </div>
     </section>
 
-    <section class="about" id="apropos">
-      <div class="about-mark">S.</div>
-      <div class="about-copy">
-        <div class="eyebrow">Derrière le studio</div>
-        <h2>A place to collect<br>little moments.</h2>
-        <p>Un petit coin d'Internet pour partager ce qui m'inspire, ce que j'apprends, ce que je crée et les choses que j'ai envie de raconter. Pas besoin de rentrer dans une seule case : cet espace évolue avec moi.</p>
-        <p>Ici, il y aura des articles, des photos, des favoris, des projets en cours et peut-être un jour une petite boutique.</p>
+    <section class="journal" id="journal">
+      <div class="wrap">
+        <div class="section-top"><div><div class="kicker">notes from my camera roll</div><h2>The little journal.</h2></div><p>Un aperçu de ce que tu trouveras ici. Les exemples seront remplacés par tes vrais articles au fil du temps.</p></div>
+        <div class="filter-row" aria-label="Filtrer les articles">
+          <button class="filter active" data-filter="all">Everything</button>
+          <button class="filter" data-filter="life">Little Life</button>
+          <button class="filter" data-filter="travel">Somewhere Else</button>
+          <button class="filter" data-filter="animals">Animals</button>
+          <button class="filter" data-filter="creative">Creative Mess</button>
+          <button class="filter" data-filter="favorites">Things I Love</button>
+        </div>
+        <div class="post-grid" id="postGrid">
+          <article class="post" data-category="life"><div class="post-art"><span>little moments<br> lately ♡</span></div><div class="post-meta">LITTLE LIFE · A JOURNAL IDEA</div><h3>A collection of ordinary days</h3><p>Les petits détails du quotidien, les photos gardées dans son téléphone et les souvenirs qu'on ne veut pas perdre.</p></article>
+          <article class="post" data-category="travel"><div class="post-art"><span>somewhere<br>under the sun ☼</span></div><div class="post-meta">SOMEWHERE ELSE · TRAVEL IDEA</div><h3>Places I dream of visiting</h3><p>Des carnets de voyage, des endroits à découvrir et des envies d'ailleurs.</p></article>
+          <article class="post" data-category="animals"><div class="post-art"><span>the animal<br>corner ♡</span></div><div class="post-meta">ANIMAL CORNER · PETS IDEA</div><h3>Life with little companions</h3><p>Les animaux qui partagent nos vies, leurs petites habitudes et les histoires à raconter.</p></article>
+          <article class="post" data-category="creative"><div class="post-art"><span>made by<br>hand ✂</span></div><div class="post-meta">CREATIVE MESS · MAKING IDEA</div><h3>Currently making something</h3><p>Crochet, bricolage, dessin et projets créatifs qui prennent forme petit à petit.</p></article>
+          <article class="post" data-category="favorites"><div class="post-art"><span>on repeat<br>♫</span></div><div class="post-meta">THINGS I LOVE · FAVORITES IDEA</div><h3>A playlist for this chapter</h3><p>Les chansons, les films, les objets et les inspirations du moment.</p></article>
+          <article class="post" data-category="life"><div class="post-art"><span>bits & pieces<br>of me</span></div><div class="post-meta">LITTLE LIFE · PERSONAL NOTE</div><h3>A space to be a little bit of everything</h3><p>Un blog personnel qui évolue avec moi, sans avoir besoin de choisir une seule passion.</p></article>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="eyebrow">Say hello ♡</div>
-      <h2>Let's keep in touch.</h2>
-      <p>Pour discuter, découvrir mes projets ou suivre mes prochaines aventures.</p>
-      <a class="cta" href="mailto:bonjour@exemple.fr">Me contacter</a>
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="about-art"><span>hello!</span></div>
+        <div class="about-copy"><div class="kicker">the person behind the posts</div><h2>Hi, I'm Alex Jane.</h2>
+          <p>Bienvenue dans mon petit coin d'Internet. J'avais envie d'un endroit pour rassembler toutes les choses qui me passionnent : les voyages, les animaux, les activités créatives, les découvertes et les petits moments de tous les jours.</p>
+          <p>Ce blog est un joyeux mélange, un peu comme un carnet qu'on remplit au fil du temps. Prends ce qui t'intéresse, explore, et fais comme chez toi.</p>
+          <div class="about-sign">See you around, Alex ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="elsewhere" id="elsewhere">
+      <div class="wrap"><div class="kicker">the internet is a big place</div><h2>Find me elsewhere.</h2>
+        <p>Je rassemblerai ici mes réseaux, mes vidéos et les autres endroits où je partage mes petites aventures. Les liens seront ajoutés quand tu me donneras tes comptes.</p>
+        <div class="socials"><a href="#elsewhere">Instagram · coming soon</a><a href="#elsewhere">Pinterest · coming soon</a><a href="#elsewhere">YouTube · coming soon</a><a href="#elsewhere">TikTok · coming soon</a></div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <span>© 2026 STUDIO / NAME</span>
-    <span>PERSONAL BLOG · EST. 2026</span>
-    <span>Instagram · Pinterest</span>
-  </footer>
+  <footer><div class="wrap footer-inner"><span>© 2026 MIDNIGHT LEMONADE BY ALEX JANE SPENCER</span><span>MADE WITH LITTLE THINGS <span class="tiny-heart">♡</span></span><a href="#home">BACK TO TOP ↑</a></div></footer>
+  <script>
+    const filterButtons = [...document.querySelectorAll('.filter')];
+    const posts = [...document.querySelectorAll('.post')];
+    function setFilter(value) {
+      filterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === value));
+      posts.forEach(post => post.hidden = value !== 'all' && post.dataset.category !== value);
+    }
+    filterButtons.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
+    document.querySelectorAll('[data-filter-link]').forEach(link => link.addEventListener('click', () => setFilter(link.dataset.filterLink)));
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mainNav');
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
 </body>
 </html>
