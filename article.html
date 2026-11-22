@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Article · Midnight Lemonade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fcfcfa;color:#343a40;font:16px/1.8 'DM Sans',Arial,sans-serif}
+a{color:inherit;text-decoration:none}.top{padding:18px 6vw;border-bottom:1px solid #e7e4df;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font:600 29px Caveat,cursive}.brand span{color:#9a8aa9}.back{font:10px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+main{width:min(850px,88vw);margin:48px auto 90px}.meta{font:10px 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#89818e}
+h1{font:400 clamp(38px,7vw,68px)/1.05 Georgia,serif;letter-spacing:-.04em;margin:14px 0 25px}
+.cover{width:100%;max-height:540px;object-fit:cover;display:block;margin:0 0 35px;border:8px solid white;box-shadow:0 5px 25px #00000010}
+.content{font-size:17px;line-height:1.9;overflow-wrap:anywhere}.content h1,.content h2,.content h3{line-height:1.2;margin:1.5em 0 .5em}.content p{margin:0 0 1.1em}.content img{max-width:100%;height:auto}.content blockquote{margin:1.5em 0;padding:8px 22px;border-left:3px solid #c8b8cc;color:#69636d;background:#f7f4f5}.content ul,.content ol{padding-left:1.5em}
+.status{padding:50px 0;text-align:center;color:#777}
+footer{text-align:center;border-top:1px solid #e7e4df;padding:25px;color:#888;font:9px 'DM Mono',monospace;letter-spacing:.1em}
+@media(max-width:600px){main{margin:30px auto 60px}.content{font-size:16px}}
+</style></head><body>
+<div class="top"><a class="brand" href="index.html">midnight <span>lemonade</span></a><a class="back" href="javascript:history.back()">← Retour</a></div>
+<main id="article"><div class="status">Chargement de l’article… ♡</div></main>
+<footer>© 2026 MIDNIGHT LEMONADE BY ALEX JANE SPENCER</footer>
+<script>
+const params=new URLSearchParams(location.search);const id=params.get('id');
+function safeContent(html){const parsed=new DOMParser().parseFromString(String(html||''),'text/html');const allowed=new Set(['P','BR','B','STRONG','I','EM','U','H1','H2','H3','UL','OL','LI','BLOCKQUOTE','A','IMG','HR']);function clean(node){[...node.childNodes].forEach(child=>{if(child.nodeType===1){if(!allowed.has(child.tagName)){child.replaceWith(...child.childNodes);return} [...child.attributes].forEach(a=>{if(child.tagName==='A'&&a.name==='href'&&/^https?:|^mailto:|^#/.test(a.value))return;if(child.tagName==='IMG'&&a.name==='src'&&/^(https?:|images\/|\.\/images\/)/.test(a.value))return;if(child.tagName==='IMG'&&a.name==='alt')return;if(child.tagName==='IMG'&&a.name==='width')return;child.removeAttribute(a.name)});if(child.tagName==='A'){child.target='_blank';child.rel='noopener noreferrer'}clean(child)}else if(child.nodeType!==3){child.remove()}})}clean(parsed.body);return parsed.body.innerHTML}
+async function load(){const root=document.getElementById('article');try{if(!id)throw Error('Article introuvable');const r=await fetch('content/posts.json');if(!r.ok)throw Error('Chargement impossible');const data=await r.json();const posts=Array.isArray(data)?data:(data.posts||[]);const p=posts.find(x=>String(x.id)===id);if(!p||p.status==='draft')throw Error('Article introuvable');document.title=(p.title||'Article')+' · Midnight Lemonade';const style=p.style||{};const font=style.font||p.font||'Georgia';const bg=style.background||p.backgroundColor||'#fcfcfa';const color=style.color||p.textColor||'#343a40';root.innerHTML='';const meta=document.createElement('div');meta.className='meta';meta.textContent=[p.category||'LE JOURNAL',p.date||''].filter(Boolean).join(' · ');const title=document.createElement('h1');title.textContent=p.title||'Sans titre';root.append(meta,title);const cover=p.image||p.coverImage||p.imageUrl||p.photo||'';if(cover){const img=document.createElement('img');img.className='cover';img.src=cover;img.alt=p.title||'Image de l’article';root.append(img)}const body=document.createElement('div');body.className='content';body.style.fontFamily=font+',Georgia,serif';body.style.background=bg;body.style.color=color;body.style.padding='clamp(18px,4vw,38px)';body.innerHTML=safeContent(p.content);root.append(body)}catch(e){root.innerHTML='<div class="status">Cet article est introuvable ou n’est pas encore publié. ♡<p><a href="journal.html">Retour au journal</a></p></div>'}}
+load();
+</script></body></html>
