@@ -198,55 +198,16 @@
     }
     filterButtons.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
     document.querySelectorAll('[data-filter-link]').forEach(link => link.addEventListener('click', () => setFilter(link.dataset.filterLink)));
-    // Load published articles from the private admin Worker.
-    async function loadPublishedArticles() {
-      const grid = document.getElementById('postGrid');
-      try {
-        const response = await fetch('content/posts.json');
-        if (!response.ok) throw new Error('API ' + response.status);
-        const payload = await response.json();
-        const articles = Array.isArray(payload) ? payload : (payload.posts || []);
-        if (!articles.length) return;
+    // Articles: cartes cliquables, styles personnalisés et images.
+    async function loadPublishedArticles(){
+      const grid=document.getElementById('postGrid');if(!grid)return;
+      try{const response=await fetch('content/posts.json');if(!response.ok)throw Error('HTTP '+response.status);
+      const data=await response.json();const articles=(Array.isArray(data)?data:(data.posts||[])).filter(p=>p.status!=='draft');
+      if(!articles.length)return;grid.innerHTML='';
+      function categoryKey(value){const t=String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(/somewhere else|travel|voyage|out there/.test(t))return'travel';if(/animal|pet|fuzzy/.test(t))return'animals';if(/creative|crea|crochet|tatou|handmade/.test(t))return'creative';if(/things i love|favorite|favourite|love|music|musique/.test(t))return'favorites';if(/le journal|journal/.test(t))return'journal';return'life'}
 
-        // Once real articles exist, replace the sample cards with them.
-        grid.innerHTML = '';
-        const categoryKey = value => {
-          const text = String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-          if (/somewhere else|travel|voyage|out there/.test(text)) return 'travel';
-          if (/animal|pet|fuzzy/.test(text)) return 'animals';
-          if (/creative|crea|crochet|tatou|handmade/.test(text)) return 'creative';
-          if (/things i love|favorite|favourite|love|music|musique/.test(text)) return 'favorites';
-          return 'life';
-        };
-        articles.forEach(article => {
-          const category = categoryKey(article.category);
-          const card = document.createElement('article');
-          card.className = 'post';
-          card.dataset.category = category;
-
-          const art = document.createElement('div');
-          art.className = 'post-art';
-          const artworkTitle = document.createElement('span');
-          artworkTitle.textContent = 'a little story ♡';
-          art.appendChild(artworkTitle);
-
-          const meta = document.createElement('div');
-          meta.className = 'post-meta';
-          const date = article.date || article.createdAt || article.created_at || '';
-          meta.textContent = [article.category || 'JOURNAL', date ? String(date).slice(0, 10) : ''].filter(Boolean).join(' · ');
-
-          const heading = document.createElement('h3');
-          heading.textContent = article.title || 'Sans titre';
-          const paragraph = document.createElement('p');
-          paragraph.textContent = article.content || '';
-
-          card.append(art, meta, heading, paragraph);
-          grid.appendChild(card);
-        });
-        setFilter('all');
-      } catch (error) {
-        console.error('Impossible de charger les articles publiés :', error);
-      }
+      articles.forEach(p=>{const card=document.createElement('article');card.className='post';card.dataset.category=categoryKey(p.category);card.tabIndex=0;card.setAttribute('role','link');card.setAttribute('aria-label','Lire '+(p.title||'cet article'));card.addEventListener('click',()=>location.href='article.html?id='+encodeURIComponent(p.id));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();location.href='article.html?id='+encodeURIComponent(p.id)}});const art=document.createElement('div');art.className='post-art';const image=p.image||p.coverImage||p.imageUrl||p.photo||'';const st=p.style||{};if(image){art.style.backgroundImage='url("'+String(image).replace(/"/g,'%22')+'")';art.style.backgroundSize='cover';art.style.backgroundPosition='center';}else{art.style.background=st.background||p.backgroundColor||'';const label=document.createElement('span');label.textContent='a little story ♡';art.append(label)}const meta=document.createElement('div');meta.className='post-meta';meta.textContent=[p.category||'LE JOURNAL',String(p.date||'').slice(0,10)].filter(Boolean).join(' · ');const heading=document.createElement('h3');heading.textContent=p.title||'Sans titre';if(st.font||p.font)heading.style.fontFamily=(st.font||p.font)+',Georgia,serif';const para=document.createElement('p');const plain=document.createElement('div');plain.innerHTML=String(p.content||'');para.textContent=(plain.textContent||'').slice(0,190);if(st.font||p.font)para.style.fontFamily=(st.font||p.font)+',Georgia,serif';if(st.color||p.textColor)para.style.color=st.color||p.textColor;card.append(art,meta,heading,para);grid.append(card);});setFilter('all');
+      }catch(error){console.error('Chargement des articles impossible',error)}
     }
     loadPublishedArticles();
 
